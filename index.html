@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Got Dad Jokes</title>
+	<meta charset="UTF-8">
+  	<meta name="description" content="Dad Jokes">
+  	<meta name="keywords" content="Feeling bored? Come and enjoy">
+  	<meta name="author" content="Charles, Alyona, Yanilda">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+    
+	<script src="js/index.js"></script>
+    
+</head>
+    
+<body onload="findDadJokes()">
+	
+	<h1 id="titleName">Got Dad Jokes</h1>
+	
+	<nav class="navbar">
+		<a href="index.html">Home</a>
+		<a href="about.html">About</a>
+	</nav>
+
+	<div class="mainbody"style="overflow:auto">
+		<div class="leftmenu">
+			<button type="button" class="collapsible">Most Popular</button>
+			  <div class="content">
+					<div class="menuitem"> Popular</div>
+					<div class="menuitem">Dogs</div>
+					<div class="menuitem">Cat</div>
+					<div class="menuitem">Knock Knock</div>
+					<div class="menuitem">Single Line Jokes</div>
+					<div class="menuitem">Two Line Jokes</div>
+				</div>
+		</div>
+	  
+		<div class="main">
+		  <h2>We got the "DAD JOKES" for you.</h2>
+		  <p>Can't find a joke? You have found the right place. Click below to get a random joke!</p>
+		  	<div>
+				<label id="jokeLabelBtn" onclick="findDadJokes()">Loading...</label>
+			</div>
+		</div>
+
+		<div class="right">
+			<!-- left blank for future uses -->
+		</div>
+	</div>
+
+	<footer class="footer">
+		<p class="copyright">Codeday &copy;2020&trade;</p>
+	</footer>
+
+	<script>
+		var coll = document.getElementsByClassName("collapsible");
+		var i;
+		
+		for (i = 0; i < coll.length; i++) {
+		  coll[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var content = this.nextElementSibling;
+			if (content.style.display === "block") {
+			  content.style.display = "none";
+			} else {
+			  content.style.display = "block";
+			}
+		  });
+		}
+	</script>
+
+</body>
+	
+</html>
