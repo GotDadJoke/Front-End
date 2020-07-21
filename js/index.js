@@ -1,4 +1,4 @@
-const api_url = '/random'
+const api_url = 'dev-api.gotdadjoke.com/random'
 
 function findDadJokes(){
 
