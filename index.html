@@ -15,12 +15,13 @@
     
 </head>
     
-<body onload="findDadJokes()">
-	
-	<h1 id="titleName">Got Dad Jokes</h1>
+<body onload="findRandomDadJokes()">
 	
 	<nav class="navbar">
-		<div class="currenttab"><a href="index.html">Home</a></div>
+		<a href="/" id="logo">
+		<img src="funny.svg" alt="gotdadjokes_icon" style="width: 19px;"/>
+		<span style="color: white;">Got Dad Jokes</span>
+		</a>
 		<a href="view/about.html">About</a>
 		<a href="view/help.html">Help</a>
 	</nav>
@@ -42,7 +43,8 @@
 		  <h2>We got the "DAD JOKES" for you.</h2>
 		  <p>Can't find a joke? You have found the right place. Click below to get a random joke!</p>
 		  	<div>
-				<label id="jokeLabelBtn" onclick="findDadJokes()">Loading...</label>
+				<label id="jokeLabel" onclick="findRandomDadJokes()">Loading...</label>
+				<button id="jokeBtn" onclick="findRandomDadJokes()">Got Dad Joke?</button>
 			</div>
 		</div>
 
