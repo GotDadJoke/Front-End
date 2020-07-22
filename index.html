@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Got Dad Jokes</title>
+	<title>Got Dad Joke</title>
 	<meta charset="UTF-8">
   	<meta name="description" content="Dad Jokes">
   	<meta name="keywords" content="Feeling bored? Come and enjoy">
@@ -19,18 +19,22 @@
 	
 	<nav class="navbar">
 		<a href="/" id="logo">
-		<img src="funny.svg" alt="gotdadjokes_icon" style="width: 19px;"/>
-		<span style="color: white;">Got Dad Jokes</span>
+		<img src="res/logoimg/funny.svg" alt="gotdadjokes_icon" style="height: 19px; color: black;"/>
+		<span id="logoFont">GotDadJoke</span>
 		</a>
 		<a href="view/about.html">About</a>
 		<a href="view/help.html">Help</a>
 	</nav>
 
 	<div class="mainbody"style="overflow:auto">
-		<div class="leftmenu">
+		<div class="left">
+			<div class="horizontaltextbutton">
+				<div style="padding: 0px 5px 0px 0px;"><input type="text" id="search" class="searchbox"name="search"></input></div>
+				<input type="submit" class="searchbtn" value="Search">
+			</div>
 			<button type="button" class="collapsible">Most Popular</button>
 			  <div class="content">
-					<div class="menuitem"> Popular</div>
+					<div class="menuitem">Popular</div>
 					<div class="menuitem">Dogs</div>
 					<div class="menuitem">Cat</div>
 					<div class="menuitem">Knock Knock</div>
@@ -41,7 +45,7 @@
 	  
 		<div class="main">
 		  <h2>We got the "DAD JOKES" for you.</h2>
-		  <p>Can't find a joke? You have found the right place. Click below to get a random joke!</p>
+		  <p>Are you winning son?</p>
 		  	<div>
 				<label id="jokeLabel" onclick="findRandomDadJokes()">Loading...</label>
 				<button id="jokeBtn" onclick="findRandomDadJokes()">Got Dad Joke?</button>
@@ -54,7 +58,7 @@
 	</div>
 
 	<footer class="footer">
-		<p class="copyright">Codeday &copy;2020&trade;</p>
+		<p class="copyright">GotDadJoke &copy;2020&trade;</p>
 	</footer>
 
 	<script>

@@ -8,24 +8,40 @@
   --secondary-color: #E6C2BF;
 }
 
+@font-face {
+  font-family: nav;
+  src: url(/res/font/Lato/Lato-Black.ttf);
+}
+
 .mainbody {
-  margin: 10px 0;
+  padding: 10px 0;
 }
 
 * {
   box-sizing: border-box;
 }
 
-.leftmenu {
+.left {
   float: left;
-  margin: 0px 10px 0px 0px;
+  padding: 0px 10px 0px 0px;
   width: 20%;
+  font-family: nav;
+  font-size: 16px;
+}
+
+.searchbox {
+  float:left;
+  width:70%;
+}
+
+.searchbtn {
+  float:right;
+  width:30%;
 }
 
 .menuitem {
   padding: 8px;
-  margin-top: 7px;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid var(--text);
 }
 
 .menuitem:last-child {
@@ -36,7 +52,8 @@
   background-color: var(--nav);
   color: var(--secondary-text);
   cursor: pointer;
-  padding: 10px;  
+  padding: 10px;
+  margin-top: 10px;  
   width: 100%;
   border: none;
   text-align: left;
@@ -45,7 +62,7 @@
   font-weight: 600;
 }
 
-.active, .collapsible:hover {
+.active, .collapsible:hover, #jokeBtn:hover {
   background-color: var(--active-button);
   color: var(--text);
 }
@@ -80,10 +97,13 @@
   background-color: var(--main-btn);
   color: var(--text);
   margin: 10px 0px 0px 0px;
+  padding: 15px;
   width: 100%;
-  height: 35px;
+  height: auto;
+  font-size: 16px;
   border-radius: 5px;
   font-weight: 800;
+  font-family: nav;
 }
 
 .right {
@@ -94,21 +114,31 @@
 }
 
 @media only screen and (max-width:800px) {
-  /* For tablets: */
-  .main {
-    width: 80%;
+  /* tablets: */
+  .left {
+    width:20%;
   }
+  
+  .main {
+    width:80%;
+  }
+  
   .right {
-    width: 100%;
+    width:100%;
   }
 }
+
 @media only screen and (max-width:500px) {
   /* For mobile phones: */
-  .leftmenu, .main, .right {
+  .left, .main, .right {
     width: 100%;
   }
 
-  .leftmenu {
-    margin: 0px 0px 10px 0px;
+  .left {
+    padding: 0px;
+  }
+
+  .main {
+    margin-top: 10px;
   }
 }
