@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Got Dad Jokes</title>
+	<title>Got Dad Joke</title>
 	<meta charset="UTF-8">
   	<meta name="description" content="Dad Jokes">
   	<meta name="keywords" content="Feeling bored? Come and enjoy">
@@ -18,34 +18,51 @@
 <body onload="findRandomDadJokes()">
 	
 	<nav class="navbar">
-		<a href="/" id="logo">
-		<img src="funny.svg" alt="gotdadjokes_icon" style="width: 19px;"/>
-		<span style="color: white;">Got Dad Jokes</span>
+		<a href="index.html" id="logo">
+		<img src="res/logoimg/funny.svg" alt="gotdadjokes_icon" style="height: 19px;"/>
+		<span id="logoFont">GotDadJoke</span>
 		</a>
 		<a href="view/about.html">About</a>
 		<a href="view/help.html">Help</a>
 	</nav>
 
 	<div class="mainbody"style="overflow:auto">
-		<div class="leftmenu">
+		<div class="left">
+			<div class="horizontaltextbutton">
+				<div class="searchBoxOuter">
+					<input type="text" id="search" class="searchBox" value="Test" onkeypress="handleKeyPress(event)">
+				</div>
+				<div>
+					<button class="searchBtn" onclick="searchBtnFunction()">Search</button>
+				</div>
+			</div>	
+
+			<div id="displayMeWhenSearch">
+				<button id="displayMeWhenSearchBtn" onclick="hiddenRandomJokeBtn()">Random Joke</button>
+			</div>
+
 			<button type="button" class="collapsible">Most Popular</button>
 			  <div class="content">
-					<div class="menuitem"> Popular</div>
+					<div class="menuitem" onclick="findRandomDadJokes()">Popular</div>
 					<div class="menuitem">Dogs</div>
-					<div class="menuitem">Cat</div>
+					<div class="menuitem">Cats</div>
 					<div class="menuitem">Knock Knock</div>
 					<div class="menuitem">Single Line Jokes</div>
 					<div class="menuitem">Two Line Jokes</div>
 				</div>
 		</div>
 	  
-		<div class="main">
-		  <h2>We got the "DAD JOKES" for you.</h2>
-		  <p>Can't find a joke? You have found the right place. Click below to get a random joke!</p>
-		  	<div>
-				<label id="jokeLabel" onclick="findRandomDadJokes()">Loading...</label>
-				<button id="jokeBtn" onclick="findRandomDadJokes()">Got Dad Joke?</button>
+		<div class="main"> 
+			<div id="hidMeWhenSearch">
+			<h2>We got the "DAD JOKES" for you.</h2>
+			<p>Are you winning son?</p>
+				<div>
+					<label id="jokeLabel" onclick="findRandomDadJokes()">Loading...</label>
+					<button id="jokeBtn" onclick="findRandomDadJokes()">Random Dad Joke!</button>
+					
+				</div>
 			</div>
+			<label id="searchLabel">Loading...</label>
 		</div>
 
 		<div class="right">
@@ -54,10 +71,10 @@
 	</div>
 
 	<footer class="footer">
-		<p class="copyright">Codeday &copy;2020&trade;</p>
+		<p class="copyright">GotDadJoke &copy;2020&trade;</p>
 	</footer>
 
-	<script>
+	<script> // collapsible menu
 		var coll = document.getElementsByClassName("collapsible");
 		var i;
 		
