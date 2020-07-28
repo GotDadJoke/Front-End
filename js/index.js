@@ -14,7 +14,7 @@ function findRandomDadJokes(){
     })
     .then(joke => {
         console.log(joke);
-        document.getElementById('jokeLabel').innerHTML = joke.joke;
+        document.getElementById('jokeLabel').innerHTML = joke.joke + "<br>" + "<br>" + "Sentiment: " + joke.sentiment;
     })
 }
 
@@ -39,7 +39,7 @@ function searchTermDadJokes(){
 
         for ( var i = 0; i < results.length; i++) {
             document.getElementById('searchLabel').innerHTML 
-             = document.getElementById('searchLabel').innerHTML + " " + results[i].joke + "<br>" + "<br>";
+             = document.getElementById('searchLabel').innerHTML + " " + results[i].joke + "<br>" + "<div class='test' >Sentiment: </div>" + results[i].sentiment + "<br>" + "<br>";
         }
     });
 }
