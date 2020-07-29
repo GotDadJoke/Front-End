@@ -39,8 +39,6 @@ body {
   width: auto;
   height: 48px;
 	background-color: var(--nav);
-  padding: 10px;
-  border-radius: 5px;
 }
 
 .navbar a {
@@ -57,7 +55,11 @@ body {
   background-color: var(--active-button);
 }
 
-.navbar #logoFont {
+.navbar .logoimg {
+  height: 30px;
+}
+
+.navbar .logoFont {
   font-family: logo;
   font-weight: 900;
   font-size: 19px;
