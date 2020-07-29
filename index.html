@@ -7,20 +7,22 @@
   	<meta name="keywords" content="Feeling bored? Come and enjoy">
   	<meta name="author" content="Charles, Alyona, Yanilda">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+	
+	<link rel="icon" href="res/logoimg/laugh1.svg">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
     
 	<script src="js/index.js"></script>
+	<script src="js/SearchJoke.js"></script>
     
 </head>
     
-<body onload="findRandomDadJokes()">
+<body onload="onLoadThis()">
 	
 	<nav class="navbar">
-		<a href="index.html" id="logo">
-		<img src="res/logoimg/funny.svg" alt="gotdadjokes_icon" style="height: 19px;"/>
-		<span id="logoFont">GotDadJoke</span>
+		<a href="index.html" class="logo">
+		<img src="res/logoimg/laugh1.svg" alt="gotdadjokes_icon" class="logoimg"/>
+		<span class="logoFont">GotDadJoke</span>
 		</a>
 		<a href="view/about.html">About</a>
 		<a href="view/help.html">Help</a>
@@ -30,7 +32,7 @@
 		<div class="left">
 			<div class="horizontaltextbutton">
 				<div class="searchBoxOuter">
-					<input type="text" id="search" class="searchBox" value="Test" onkeypress="handleKeyPress(event)">
+					<input type="text" id="search" class="searchBox" onkeypress="handleKeyPress(event)">
 				</div>
 				<div>
 					<button class="searchBtn" onclick="searchBtnFunction()">Search</button>
@@ -43,12 +45,11 @@
 
 			<button type="button" class="collapsible">Most Popular</button>
 			  	<div class="content">
-					<div class="menuitem" onclick="findRandomDadJokes()">Popular</div>
-					<div class="menuitem" onclick="findRandomDadJokes()">Dogs</div>
-					<div class="menuitem" onclick="findRandomDadJokes()">Cats</div>
-					<div class="menuitem" onclick="findRandomDadJokes()">Knock Knock</div>
-					<div class="menuitem" onclick="findRandomDadJokes()">Single Line Jokes</div>
-					<div class="menuitem" onclick="findRandomDadJokes()">Two Line Jokes</div>
+					<div class="menuitem" id="popular1" onclick="mostPopularBtnFunction(this.innerHTML)">Term1</div>
+					<div class="menuitem" id="popular2" onclick="mostPopularBtnFunction(this.innerHTML)">Term2</div>
+					<div class="menuitem" id="popular3" onclick="mostPopularBtnFunction(this.innerHTML)">Term3</div>
+					<div class="menuitem" id="popular4" onclick="mostPopularBtnFunction(this.innerHTML)">Term4</div>
+					<div class="menuitem" id="popular5" onclick="mostPopularBtnFunction(this.innerHTML)">Term5</div>
 				</div>
 		</div>
 	  
@@ -57,8 +58,8 @@
 			<h2>We got the "DAD JOKES" for you.</h2>
 			<p>Are you winning son?</p>
 				<div>
-					<label id="jokeLabel" onclick="findRandomDadJokes()">Loading...</label>
-					<button id="jokeBtn" onclick="findRandomDadJokes()">Random Dad Joke!</button>
+					<label id="jokeLabel" onclick="SearchJoke.byRandom()">Loading...</label>
+					<button id="jokeBtn" onclick="SearchJoke.byRandom()">Random Dad Joke!</button>
 					
 				</div>
 			</div>

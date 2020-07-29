@@ -13,8 +13,9 @@
   src: url(/res/font/Lato/Lato-Black.ttf);
 }
 
-.test {
-
+.searchResults {
+  padding: 20px;
+  background-color: var(--secondary-text);
 }
 
 .mainbody {
@@ -64,6 +65,12 @@
 
 .menuitem:last-child {
   border-bottom: none;
+}
+
+.menuitem:hover {
+  color: var(--text);
+  background-color: var(--active-button);
+  border: 1px solid var(--text);
 }
 
 .collapsible {
