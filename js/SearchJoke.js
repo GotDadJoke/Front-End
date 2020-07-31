@@ -56,12 +56,42 @@ class SearchJoke {
         })
         .then(results => { //results = shold be array of jokes
             console.log(results);
-    
+            console.log(results.length);
+            
             searchLabel.innerHTML = "<strong>Results of <strong> '"+ searchterm + "'." + "<br>" + "<br>";
-    
-            for ( var i = 0; i < results.length; i++) {
-                searchLabel.innerHTML 
-                 = searchLabel.innerHTML + "<div class='searchResults'>" + results[i].joke + "<br>" + "Sentiment: " + results[i].sentiment + "</div>" + "<br>" + "<br>";
+                
+            if(!searchterm) {
+                fetch(api_url_searchAll)
+                .then(response => {
+                    console.log(response);
+                    return response.json();
+            })
+            .then(jsonFile => {
+                console.log(jsonFile);
+                return jsonFile.results;
+            })
+            .then(results => { //results = shold be array of jokes
+                console.log(results);
+        
+                searchLabel.innerHTML = "<strong>Here is all of the jokes.<strong>" + "<br>" + "<br>";
+        
+                for ( var i = 0; i < results.length; i++) {
+                    searchLabel.innerHTML 
+                    =  searchLabel.innerHTML + "<div class='searchResults'>" + results[i].joke + "<br>" + "Sentiment: " + results[i].sentiment + "</div>" + "<br>" + "<br>";
+                }
+            });
+            } else {
+                if(results.length > 0) {
+
+                    for ( var i = 0; i < results.length; i++) {
+                            searchLabel.innerHTML 
+                            = searchLabel.innerHTML + "<div class='searchResults'>" + results[i].joke + "<br>" + "Sentiment: " + results[i].sentiment + "</div>" + "<br>" + "<br>";
+                        }
+                    
+                } else {
+                    searchLabel.innerHTML 
+                    = searchLabel.innerHTML + "No results found.";
+                }
             }
         });
     }
@@ -105,10 +135,17 @@ class SearchJoke {
                 console.log(results);
         
                 searchLabel.innerHTML = "<strong>Results of <strong> '"+ searchBoxTerm + "'." + "<br>" + "<br>";
-        
-                for ( var i = 0; i < results.length; i++) {
+                
+                if(results.length > 0) {
+    
+                    for ( var i = 0; i < results.length; i++) {
+                        searchLabel.innerHTML 
+                            = searchLabel.innerHTML + "<div class='searchResults'>" + results[i].joke + "<br>" + "Sentiment: " + results[i].sentiment + "</div>" + "<br>" + "<br>";
+                        }
+                    
+                } else {
                     searchLabel.innerHTML 
-                    = searchLabel.innerHTML + "<div class='searchResults'>" + results[i].joke + "<br>" + "Sentiment: " + results[i].sentiment + "</div>" + "<br>" + "<br>";
+                    = searchLabel.innerHTML + "No results found.";
                 }
             });
         }
