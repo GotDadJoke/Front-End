@@ -16,10 +16,12 @@
 .searchResults {
   padding: 20px;
   background-color: var(--secondary-text);
+  min-height: 100px;
 }
 
 .mainbody {
   padding: 10px 0;
+  max-width: 1200px;
 }
 
 * {
@@ -100,11 +102,11 @@
 }
 
 .main {
-    float: left;
-    width: 60%;
-    padding: 0px 20px 20px 20px;
-    overflow: hidden;
-    background-color: lightgrey;
+  float: left;
+  width: 60%;
+  padding: 10px 20px 20px 20px;
+  overflow: hidden;
+  background-color: lightgrey;
 }
 
 #jokeLabel {

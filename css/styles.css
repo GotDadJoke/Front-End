@@ -21,6 +21,7 @@ html {
     background-image: linear-gradient(270deg, #f3f3f3, #fff 100%);
     -webkit-font-smoothing: antialiased;    
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+    margin: 5px;
 }
 
 body {
@@ -56,13 +57,15 @@ body {
 }
 
 .navbar .logoimg {
-  height: 30px;
+  height: 31px;
+  position: relative;
+  top: 8px;
 }
 
 .navbar .logoFont {
   font-family: logo;
   font-weight: 900;
-  font-size: 19px;
+  font-size: 26px;
 }
 
 .navbar .current {
