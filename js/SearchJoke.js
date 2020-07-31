@@ -42,7 +42,7 @@ class SearchJoke {
     }
 
     static byTerm (searchterm) {
-        var newApiUrl = api_url_search + searchterm;
+        var newApiUrl = api_url_search + searchterm + "&limit=5";
         var searchLabel = document.getElementById('searchLabel');
         
         fetch(newApiUrl)
@@ -98,7 +98,7 @@ class SearchJoke {
 
     static bySearchBoxTerm () {
         var searchBoxTerm = document.getElementById("search").value;
-        var newApiUrl = api_url_search + searchBoxTerm;
+        var newApiUrl = api_url_search + searchBoxTerm + "&limit=5";
         var searchLabel = document.getElementById('searchLabel');
         
         if(!searchBoxTerm) {
