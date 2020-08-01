@@ -2,7 +2,7 @@ const api_url_random = 'https://api.gotdadjoke.com/randomJoke/'
 const api_url_search = 'https://api.gotdadjoke.com/searchTerm?term='
 const api_url_searchAll = 'https://api.gotdadjoke.com/search'
 const api_url_popular = 'https://api.gotdadjoke.com/popular'
-
+const api_url_term_page = 'https://xjwfqto0ni.execute-api.us-east-1.amazonaws.com/dev/searchTermPage'
 //https://cors-anywhere.herokuapp.com/
 
 class SearchJoke {
@@ -27,7 +27,7 @@ class SearchJoke {
     }
     
     static byRandom() {
-
+            /*
         var jokeLabel = document.getElementById('jokeLabel');
 
         fetch(api_url_random)
@@ -38,13 +38,14 @@ class SearchJoke {
         .then(joke => {
             console.log(joke);
             jokeLabel.innerHTML = joke.joke + "<br>" + "<br>" + "Sentiment: " + joke.sentiment;
-        })
+        })*/
+        searchRandomFilter();
     }
 
     static byTerm (searchterm) {
-        var newApiUrl = api_url_search + searchterm + "&limit=5";
-        var searchLabel = document.getElementById('searchLabel');
-        
+        searchByTermPage(searchterm)
+       
+        /*
         fetch(newApiUrl)
             .then(response => {
                 console.log(response);
@@ -94,14 +95,16 @@ class SearchJoke {
                 }
             }
         });
+        */
     }
 
     static bySearchBoxTerm () {
         var searchBoxTerm = document.getElementById("search").value;
-        var newApiUrl = api_url_search + searchBoxTerm + "&limit=5";
-        var searchLabel = document.getElementById('searchLabel');
-        
-        if(!searchBoxTerm) {
+     
+        searchByTermPage(searchBoxTerm );
+
+
+       /* if(!searchBoxTerm) {
                 fetch(api_url_searchAll)
                 .then(response => {
                     console.log(response);
@@ -148,6 +151,6 @@ class SearchJoke {
                     = searchLabel.innerHTML + "No results found.";
                 }
             });
-        }
+        }*/
     }
 }

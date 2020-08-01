@@ -11,9 +11,13 @@
 	<link rel="icon" href="res/logoimg/laugh1.svg">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
-    
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/css-toggle-switch/latest/toggle-switch.css" />
+   
 	<script src="js/index.js"></script>
 	<script src="js/SearchJoke.js"></script>
+	<script src="js/searchFilter.js"></script>
+	
+
     
 </head>
     
@@ -28,7 +32,7 @@
 		<a href="view/help.html">Help</a>
 	</nav>
 
-	<div class="mainbody"style="overflow:auto">
+	<div class="mainbody" style="overflow:auto">
 		<div class="left">
 			<div class="horizontaltextbutton">
 				<div class="searchBoxOuter">
@@ -39,6 +43,28 @@
 				</div>
 			</div>	
 
+			<div></div>
+			<span>Sentiment Filter </span>
+
+			<div class="switch-toggle switch-4 switch-candy">
+
+			  <input id="off" name="state-d" type="radio" value="off" checked="checked"  />
+			  <label for="off" onclick=""  >Off</label>
+
+			  <input id="positive" name="state-d" type="radio"  value="positive"/>
+			  <label for="positive"  onclick="">Positive</label>
+
+
+			  <input id="mixed" name="state-d" type="radio"  value="mixed" />
+			  <label for="mixed" onclick="">Mixed</label>
+
+			  <input id="negative" name="state-d" type="radio"  value="negative"/>
+			  <label for="negative" onclick="">Negative</label>
+			
+
+			  <a></a>
+			</div>
+			
 			<div id="displayMeWhenSearch">
 				<button id="displayMeWhenSearchBtn" onclick="hiddenRandomJokeBtn()">Random Joke</button>
 			</div>
@@ -52,6 +78,7 @@
 					<div class="menuitem" id="popular5" onclick="mostPopularBtnFunction(this.innerHTML)">Term5</div>
 				</div>
 		</div>
+
 	  
 		<div class="main"> 
 			<div id="hidMeWhenSearch">
