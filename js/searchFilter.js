@@ -337,27 +337,27 @@ function searchRandomFilter(){
 }
 function clickRating1(){
 	UpdateRating(jokeID, 1)
-	hideRating();
+	// hideRating();
 	console.log("rated 1")
 }
 function clickRating2(){
 	UpdateRating(jokeID, 2)
-	hideRating();
+	// hideRating();
 	console.log("rated 2")
 }
 function clickRating3(){
 	UpdateRating(jokeID, 3)
-	hideRating();
+	// hideRating();
 	console.log("rated 3")
 }
 function clickRating4(){
 	UpdateRating(jokeID, 4)
-	hideRating();
+	// hideRating();
 	console.log("rated 4")
 }
 function clickRating5(){
 	UpdateRating(jokeID, 5)
-	hideRating();
+	// hideRating();
 	console.log("rated 5")
 }
 function hideRating(){
