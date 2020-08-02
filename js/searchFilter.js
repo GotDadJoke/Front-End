@@ -3,6 +3,7 @@ positiveBatch = new Set()
 negativeBatch= new Set()
 mixedBatch= new Set()
 prevTerm = ''
+let jokeID = "";
 function searchByTermPage(term){
 	if(term != prevTerm){
 		positiveBatch.clear();
@@ -284,7 +285,6 @@ cachedrandomDadjokesMix = []
 cachedrandomDadjokesPos = []
 function searchRandomFilter(){
 
-
   let filterSelection = document.querySelector('input[name=state-d]:checked');
   if (filterSelection!= null ){
   	filterSelection= filterSelection.value;
@@ -324,14 +324,50 @@ function searchRandomFilter(){
 					}
 				).then(data =>{ 
 					let jokeLabel = document.getElementById('jokeLabel');
-						jokeLabel.innerHTML = data.joke+ '</br>'+sentimentEmoji(data.sentiment);
-					}
-				)
- 	}
+						jokeLabel.innerHTML = data.joke + '</br>'+sentimentEmoji(data.sentiment);
+				// Get Rating
+				jokeID = data.id;
+				getCurrentRating(data.id);
+				// clickRating(data.id);
+			})
 
-
-
+			// console.log("id: ",data.id,"rating: ", data.rating)
+			searchByTermPage
+	}
 }
+function clickRating1(){
+	UpdateRating(jokeID, 1)
+	hideRating();
+	console.log("rated 1")
+}
+function clickRating2(){
+	UpdateRating(jokeID, 2)
+	hideRating();
+	console.log("rated 2")
+}
+function clickRating3(){
+	UpdateRating(jokeID, 3)
+	hideRating();
+	console.log("rated 3")
+}
+function clickRating4(){
+	UpdateRating(jokeID, 4)
+	hideRating();
+	console.log("rated 4")
+}
+function clickRating5(){
+	UpdateRating(jokeID, 5)
+	hideRating();
+	console.log("rated 5")
+}
+function hideRating(){
+	document.getElementById('rating1').style.display = "block";
+	document.getElementById('rating2').style.display = "block";
+	document.getElementById('rating3').style.display = "block";
+	document.getElementById('rating4').style.display = "block";
+	document.getElementById('rating5').style.display = "block";
+}
+
 
 let popTheJoke = ( jokeArray )=>
 {
