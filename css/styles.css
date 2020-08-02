@@ -35,7 +35,7 @@ body {
     font-size: 16px;
     line-height: 1.5;
     margin-top:0;
-    overflow: hidden;
+    overflow-x: hidden;
     margin-left: 0;
     /*max-width: 1200px;*/
 }
@@ -90,8 +90,12 @@ h1, h2 {
   background-color: var(--nav);
   padding: 1px 0px;
 }
-
-
+.navbar-right{
+  overflow: hidden;
+}
+.navbar-right .icon {
+  display: none;
+}
 
 @media only screen and (min-width:801px){
 .footer{
@@ -106,7 +110,6 @@ h1, h2 {
 .mainbody, .navbar, .footer{
   padding-left: 3rem !important; 
   padding-right: 3rem !important;
-  
 } 
 .navbar .navbar-right{
   float: right;
@@ -121,9 +124,16 @@ h1, h2 {
   width: auto;
 }
 
+
+.navbar-right a {display: none;}
+.navbar-right a.icon {
+    float: right;
+    display: block;
+  }
+
+
+
 }
-
-
 
 
 .footer p {
