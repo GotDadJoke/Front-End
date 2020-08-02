@@ -22,15 +22,21 @@
 </head>
     
 <body onload="onLoadThis()">
-	
-	<nav class="navbar">
-		<a href="index.html" class="logo">
-		<img src="res/logoimg/laugh1.svg" alt="gotdadjokes_icon" class="logoimg"/>
-		<span class="logoFont">GotDadJoke</span>
-		</a>
-		<a href="view/about.html">About</a>
-		<a href="view/help.html">Help</a>
-	</nav>
+	<div class='container' >
+		<header>
+			<nav class="navbar">
+
+				<a href="index.html" class="logo">
+				<img src="res/logoimg/laugh1.svg" alt="gotdadjokes_icon" class="logoimg"/>
+				<span class="logoFont">GotDadJoke</span>
+				</a>
+				<nav class="navbar navbar-right">
+						<a href="view/about.html">About</a>
+						<a href="view/help.html">Help</a>
+				</nav>
+			</nav>
+		</header>
+
 
 	<div class="mainbody" style="overflow:auto">
 		<div class="left">
@@ -70,7 +76,7 @@
 			</div>
 
 			<button type="button" class="collapsible">Most Popular</button>
-			  	<div class="content">
+			  	<div class="content" >
 					<div class="menuitem" id="popular1" onclick="mostPopularBtnFunction(this.innerHTML)">Term1</div>
 					<div class="menuitem" id="popular2" onclick="mostPopularBtnFunction(this.innerHTML)">Term2</div>
 					<div class="menuitem" id="popular3" onclick="mostPopularBtnFunction(this.innerHTML)">Term3</div>
@@ -102,6 +108,8 @@
 	<footer class="footer">
 		<p class="copyright">GotDadJoke &copy;2020&trade;</p>
 	</footer>
+
+</div>
 
 	<script> // collapsible menu
 		var coll = document.getElementsByClassName("collapsible");

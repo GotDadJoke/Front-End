@@ -18,14 +18,14 @@
   margin-bottom: 1rem; 
   background-color: var(--secondary-text);
   min-height: 100px;
-
 }
 
 .mainbody {
   padding: 10px 0;
-  max-width: 1200px;
-}
+  /*max-width: 1200px;*/
+  margin: 0 auto;
 
+}
 * {
   box-sizing: border-box;
 }
@@ -143,14 +143,14 @@
   padding: 10px 10px 0px 10px;
   display: none;
 }
-
+/*
 .right {
     float: left;
     width: 20%;
     padding: 10px 15px;
     margin-top: 7px;
 }
-
+*/
 @media only screen and (max-width:800px) {
   /* tablets: */
 .left, .main, .right {
@@ -186,6 +186,7 @@
   #displayMeWhenSearch {
     padding: 0px 10px 0px 10px;
   }
+
 }
 
 @media only screen and (max-width:500px) {
