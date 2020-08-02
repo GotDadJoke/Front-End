@@ -153,24 +153,38 @@
 
 @media only screen and (max-width:800px) {
   /* tablets: */
-  .left {
-    width:20%;
-  }
-  
-  .main {
-    width:80%;
-  }
-  
-  .searchBox, .searchBtn {
+.left, .main, .right {
     width: 100%;
   }
 
-  .searchBoxOuter {
-    padding: 0px 0px 0px 0px;
+  .left {
+    padding: 0px;
   }
 
-  .right {
-    width:100%;
+  .main {
+    margin-top: 10px;
+  }
+
+  .horizontaltextbutton {
+    padding: 0px 10px 0px 10px;
+  }
+
+  .searchBoxOuter {
+    padding: 0px 5px 0px 0px;
+  }
+
+  .searchBox {
+    width: 80%;
+    height: 30px;
+  }
+
+  .searchBtn {
+    width: 20%;
+    height: 30px;
+  }
+
+  #displayMeWhenSearch {
+    padding: 0px 10px 0px 10px;
   }
 }
 

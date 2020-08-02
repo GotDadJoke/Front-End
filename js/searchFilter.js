@@ -1,13 +1,13 @@
 //
-positiveBatch=[]
-negativeBatch=[]
-mixedBatch=[]
+positiveBatch = new Set() 
+negativeBatch= new Set()
+mixedBatch= new Set()
 prevTerm = ''
 function searchByTermPage(term){
 	if(term != prevTerm){
-		positiveBatch.length=0;
-		negativeBatch.length=0;
-		mixedBatch.length=0;
+		positiveBatch.clear();
+		negativeBatch.clear();
+		mixedBatch.clear();
 	}
 	prevTerm = term; 
 
@@ -45,23 +45,20 @@ let positiveJokesBatch= (urlTerm)=>{
 	searchLabel = document.getElementById('searchLabel');
 	searchLabel.innerHTML=""
 
-
-
 	
 	fetch(urlTerm)
 	.then( (resp) => resp.json()) 
 	.then(data =>{
 		
-
-
 		
 		if (data.total_jokes <= 5){
 
 			let jokes = data.results;
 		    jokes.forEach(obj =>{
 		     if (obj.sentiment=='NEUTRAL' || obj.sentiment=='POSITIVE'){
-
-		     	positiveBatch.push(obj)
+		     	
+		     		positiveBatch.add(obj)
+		     	
 		     }
 
 		 	});
@@ -70,17 +67,17 @@ let positiveJokesBatch= (urlTerm)=>{
 
 		else{
 		   console.log("More than 5 jokes")
-		   if (positiveBatch. length<5){
+		   if (positiveBatch. size<5){
 		   keepSearchingJokes(data, urlTerm,'POSITIVE', 1, positiveBatch)
 			}		
-		   if (positiveBatch. length<5){
+		   if (positiveBatch. size<5){
 		   	keepSearchingJokes(data, urlTerm,'NEUTRAL', 1, positiveBatch)
 		   }
 
 		}	
 	
 
-	return positiveBatch.map( (jokeObj)=> {
+	return positiveBatch.forEach( (jokeObj)=> {
 			let emoji = document.createTextNode(sentimentEmoji(`${jokeObj.sentiment}`)),
 				br = document.createElement("br"),
 				starDiv=document.createElement('div'),
@@ -114,7 +111,8 @@ let negativeJokesBatch= (urlTerm)=>{
 			let jokes = data.results;
 		    jokes.forEach(obj =>{
 		     if (obj.sentiment=='NEGATIVE'){
-		     	negativeBatch.push(obj)
+		 
+		     		negativeBatch.add(obj)  
 		     }
 
 		 	});
@@ -123,13 +121,13 @@ let negativeJokesBatch= (urlTerm)=>{
 
 		else{
 		   console.log("More than 5 jokes")
-		    if (negativeBatch. length<5){
-		   keepSearchingJokes(data, urlTerm,'NEGATIVE', 1,  negativeBatch)
+		    if (negativeBatch. size<5){
+		   		keepSearchingJokes(data, urlTerm,'NEGATIVE', 1,  negativeBatch)
 		   	}
 		}	
 	
 
-	return negativeBatch.map( (jokeObj)=> {
+	return negativeBatch.forEach( (jokeObj)=> {
 			let emoji = document.createTextNode(sentimentEmoji(`${jokeObj.sentiment}`)),
 				br = document.createElement("br"),
 				starDiv=document.createElement('div'),
@@ -163,7 +161,8 @@ let mixedJokesBatch= (urlTerm)=>{
 			let jokes = data.results;
 		    jokes.forEach(obj =>{
 		     if (obj.sentiment=='MIXED'){
-		     	mixedBatch.push(obj)
+		     	
+		     		mixedBatch.add(obj)
 		     }
 
 		 	});
@@ -172,13 +171,13 @@ let mixedJokesBatch= (urlTerm)=>{
 
 		else{
 		   console.log("More than 5 jokes")
-		    if (mixedBatch. length<5){
+		    if (mixedBatch. size<5){
 		   keepSearchingJokes(data, urlTerm,'MIXED', 1, mixedBatch)
 			}		
 		}	
 	
 
-	return mixedBatch.map( (jokeObj)=> {
+	return mixedBatch.forEach( (jokeObj)=> {
 			let emoji = document.createTextNode(sentimentEmoji(`${jokeObj.sentiment}`)),
 				br = document.createElement("br"),
 				starDiv=document.createElement('div'),
@@ -204,7 +203,7 @@ let keepSearchingJokes=( data, urlTerm, sentiment, page, arr)=>{
 	let totalJokes = data.total_jokes;
 	 let limit = 5;
 	 console.log("we are here  keep searchinh")
-	if (page <= totalPages && arr.length < limit){
+	if (page <= totalPages && arr.size < limit){
 	
 	  let url= urlTerm+"&page="+page;
 
@@ -214,7 +213,7 @@ let keepSearchingJokes=( data, urlTerm, sentiment, page, arr)=>{
 			let jokes = data.results;
 			jokes.forEach(obj =>{
 		     if (obj.sentiment ==sentiment && arr.length<limit){
-		     	arr.push(obj);
+		     	arr.add(obj);
 		     	 console.log("we are here"+sentiment)
 		     }
 
@@ -236,16 +235,20 @@ let getThoseJokes = (urlTerm)=>{
 			searchLabel = document.getElementById('searchLabel');
 			searchLabel.innerHTML=""
 			let jokesArray = data.results;
-			return jokesArray.map( (jokeObj)=> {
+			return jokesArray.forEach( (jokeObj)=> {
 
 			let sentiment= 	`${jokeObj.sentiment}`;
 			if (sentiment=='POSITIVE' || sentiment=='NEUTRAL'){
-
-					positiveBatch.push(jokeObj);
+			
+					positiveBatch.add(jokeObj);
+				
 			}else if (sentiment=="NEGATIVE"){
-					negativeBatch.push(jokeObj);
+				
+					negativeBatch.add(jokeObj);
+				
 			}else{
-					mixedBatch.push(jokeObj);
+				
+					mixedBatch.add(jokeObj);
 			}
 
 			let emoji = document.createTextNode(sentimentEmoji(sentiment)),
