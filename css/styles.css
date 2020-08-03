@@ -57,7 +57,16 @@ header{
   font-size: 16px;
 }
 
+.navbar-right a {
+  position: relative;
+  top:12px;
+}
+
 .navbar a:hover {
+  color: var(--text);
+}
+
+.navbar-right a:hover {
   color: var(--text);
   background-color: var(--active-button);
 }
@@ -129,9 +138,6 @@ h1, h2 {
     float: right;
     display: block;
   }
-
-
-
 }
 
 
