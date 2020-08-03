@@ -389,7 +389,7 @@ let positiveJoke = ()=>{
 			}
 		).then(data =>{
 			let sentiment =data.sentiment;
-			if (entiment=='POSITIVE' || sentiment=='NEUTRAL'  ){
+			if (sentiment=='POSITIVE' || sentiment=='NEUTRAL'  ){
 				let jokeLabel = document.getElementById('jokeLabel');
 				jokeLabel.innerHTML = data.joke + '</br>'+sentimentEmoji(data.sentiment);
 			}else{
