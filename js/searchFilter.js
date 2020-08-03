@@ -51,7 +51,6 @@ let positiveJokesBatch= (urlTerm)=>{
 	.then( (resp) => resp.json()) 
 	.then(data =>{
 		
-		
 		if (data.total_jokes <= 5){
 
 			let jokes = data.results;
@@ -59,7 +58,7 @@ let positiveJokesBatch= (urlTerm)=>{
 		     if (obj.sentiment=='NEUTRAL' || obj.sentiment=='POSITIVE'){
 		     	
 		     		positiveBatch.add(obj)
-		     	
+
 		     }
 
 		 	});
@@ -90,8 +89,7 @@ let positiveJokesBatch= (urlTerm)=>{
 			div.appendChild(emoji);
 			div.appendChild(starDiv);
 			searchLabel.appendChild(div);
-			});	
-
+			});
 
 	})
 
@@ -285,6 +283,13 @@ cachedrandomDadjokesMix = []
 cachedrandomDadjokesPos = []
 function searchRandomFilter(){
 
+	//function enable star radio buttons after click
+	document.getElementById('rating1').disabled = false;
+	document.getElementById('rating2').disabled = false;
+	document.getElementById('rating3').disabled = false;
+	document.getElementById('rating4').disabled = false;
+	document.getElementById('rating5').disabled = false;
+
   let filterSelection = document.querySelector('input[name=state-d]:checked');
   if (filterSelection!= null ){
   	filterSelection= filterSelection.value;
@@ -327,45 +332,44 @@ function searchRandomFilter(){
 						jokeLabel.innerHTML = data.joke + '</br>'+sentimentEmoji(data.sentiment);
 				// Get Rating
 				jokeID = data.id;
-				getCurrentRating(data.id);
-				// clickRating(data.id);
+				getCurrentRating(jokeID);
 			})
 
-			// console.log("id: ",data.id,"rating: ", data.rating)
 			searchByTermPage
 	}
 }
+//onClick functions for rating radio buttons
 function clickRating1(){
 	UpdateRating(jokeID, 1)
-	hideRating();
-	console.log("rated 1")
+	disableRating();
 }
+
 function clickRating2(){
 	UpdateRating(jokeID, 2)
-	hideRating();
-	console.log("rated 2")
+	disableRating();
 }
+
 function clickRating3(){
 	UpdateRating(jokeID, 3)
-	hideRating();
-	console.log("rated 3")
+	disableRating();
 }
+
 function clickRating4(){
 	UpdateRating(jokeID, 4)
-	hideRating();
-	console.log("rated 4")
+	disableRating();
 }
 function clickRating5(){
 	UpdateRating(jokeID, 5)
-	hideRating();
-	console.log("rated 5")
+	disableRating();
 }
-function hideRating(){
-	document.getElementById('rating1').style.display = "block";
-	document.getElementById('rating2').style.display = "block";
-	document.getElementById('rating3').style.display = "block";
-	document.getElementById('rating4').style.display = "block";
-	document.getElementById('rating5').style.display = "block";
+
+//function diables star radio buttons after click
+function disableRating(){
+	document.getElementById('rating1').disabled = true;
+	document.getElementById('rating2').disabled = true;
+	document.getElementById('rating3').disabled = true;
+	document.getElementById('rating4').disabled = true;
+	document.getElementById('rating5').disabled = true;
 }
 
 

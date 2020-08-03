@@ -1,3 +1,4 @@
+//function do POST request and gets current rating and number of people rated the joke. Insert it to HTML
 function getCurrentRating(id){
     fetch('https://dev-api.gotdadjoke.com/rating/get', {
         method: 'POST',
@@ -14,10 +15,13 @@ function getCurrentRating(id){
             return data.json();
         }).then(ratingBody => {
         let currentRating = document.getElementById('currentRating');
-        currentRating.innerHTML = "rating: "+ ratingBody.rating + " people rated: " + ratingBody.num_rated;
+        let totalRatings = document.getElementById('totalRatings');
+        currentRating.innerHTML = ratingBody.rating;
+        totalRatings.innerHTML = "ratings: " + ratingBody.num_rated;
     })
 }
 
+//function do POST request and gets updated rating and number of people rated the joke. Insert it to HTML
 function UpdateRating(id, rating){
     fetch('https://dev-api.gotdadjoke.com/rating/update', {
         method: 'POST',
@@ -34,6 +38,8 @@ function UpdateRating(id, rating){
             return data.json();
         }).then(ratingBody => {
         let currentRating = document.getElementById('currentRating');
-        currentRating.innerHTML = "rating: "+ ratingBody.rating + " people rated: " + ratingBody.num_rated;
+        let totalRatings = document.getElementById('totalRatings');
+        currentRating.innerHTML = ratingBody.rating;
+        totalRatings.innerHTML = "ratings: " + ratingBody.num_rated;
     })
 }

@@ -93,7 +93,7 @@
 		<div class="main"> 
 			<div id="hidMeWhenSearch">
 			<h2>We got the "DAD JOKES" for you.</h2>
-			<p>Are you winning son?</p>
+			<p id="subtitle">Are you winning son?</p>
 				<div>
 					<label id="jokeLabel" onclick="SearchJoke.byRandom()">Loading...</label>
 					<span class="rating">
@@ -113,7 +113,9 @@
 							 onclick="clickRating1()">
 					  <label for="rating1">1</label>
 					</span>
-					<p id="currentRating"></p>
+					<h2 id="currentRating"></h2>
+					<p id="ratingOutOf5">/5</p>
+					<p id="totalRatings">total ratings</p>
 					<button id="jokeBtn" onclick="SearchJoke.byRandom()">Random Dad Joke!</button>
 				</div>
 			</div>
