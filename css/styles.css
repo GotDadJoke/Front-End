@@ -31,7 +31,7 @@ html, body{
 body {
     background-color: var(--main-bg);
     color: var(--text);
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Lato;
     font-size: 16px;
     line-height: 1.5;
     margin-top:0;
@@ -99,11 +99,10 @@ h1, h2 {
 
 @media only screen and (min-width:801px){
 .footer{
-   
   width: 100%;
   position: absolute;
   bottom: 0;
-  padding: 10px 20px; 
+  padding: 5px 20px;
   box-sizing: border-box;
 
 }
@@ -178,3 +177,23 @@ h1, h2 {
 }
 
 .rating > label:hover:before,  .rating > label:hover ~ label:before,  .rating:not(:hover) > :checked ~ label:before { opacity: 1; }
+
+#currentRating{
+    font-size: 30px;
+    margin: 10px 0px -5px;
+    /*display: block;*/
+    float: left;
+}
+#ratingOutOf5{
+    color: #242729;
+    font-size: 13px;
+    margin: 25px 10px 10px 0;
+    display: block;
+    float: left;
+}
+/* rating system end*/
+
+#subtitle{
+    margin: -15px 0 35px;
+    color: #242729;
+}
