@@ -17,7 +17,7 @@
 	<script src="js/index.js"></script>
 	<script src="js/SearchJoke.js"></script>
 	<script src="js/searchFilter.js"></script>
-	
+	<script src="js/rating.js"></script>
 
     
 </head>
@@ -93,11 +93,30 @@
 		<div class="main"> 
 			<div id="hidMeWhenSearch">
 			<h2>We got the "DAD JOKES" for you.</h2>
-			<p>Are you winning son?</p>
+			<p id="subtitle">Are you winning son?</p>
 				<div>
 					<label id="jokeLabel" onclick="SearchJoke.byRandom()">Loading...</label>
+					<span class="rating">
+					  <input id="rating5" type="radio" name="rating" value="5"
+							 onclick="clickRating5()">
+					  <label for="rating5" >5</label>
+					  <input id="rating4" type="radio" name="rating" value="4"
+							 onclick="clickRating4()">
+					  <label for="rating4">4</label>
+					  <input id="rating3" type="radio" name="rating" value="3"
+							 onclick="clickRating3()">
+					  <label for="rating3">3</label>
+					  <input id="rating2" type="radio" name="rating" value="2"
+							 onclick="clickRating2()">
+					  <label for="rating2">2</label>
+					  <input id="rating1" type="radio" name="rating" value="1"
+							 onclick="clickRating1()">
+					  <label for="rating1">1</label>
+					</span>
+					<h2 id="currentRating"></h2>
+					<p id="ratingOutOf5">/5</p>
+					<p id="totalRatings">total ratings</p>
 					<button id="jokeBtn" onclick="SearchJoke.byRandom()">Random Dad Joke!</button>
-					
 				</div>
 			</div>
 			<label id="searchLabel">Loading...</label>

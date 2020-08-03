@@ -3,6 +3,7 @@ positiveBatch = new Set()
 negativeBatch= new Set()
 mixedBatch= new Set()
 prevTerm = ''
+let jokeID = "";
 function searchByTermPage(term){
 	if(term != prevTerm){
 		positiveBatch.clear();
@@ -50,7 +51,6 @@ let positiveJokesBatch= (urlTerm)=>{
 	.then( (resp) => resp.json()) 
 	.then(data =>{
 		
-		
 		if (data.total_jokes <= 5){
 
 			let jokes = data.results;
@@ -58,7 +58,7 @@ let positiveJokesBatch= (urlTerm)=>{
 		     if (obj.sentiment=='NEUTRAL' || obj.sentiment=='POSITIVE'){
 		     	
 		     		positiveBatch.add(obj)
-		     	
+
 		     }
 
 		 	});
@@ -89,8 +89,7 @@ let positiveJokesBatch= (urlTerm)=>{
 			div.appendChild(emoji);
 			div.appendChild(starDiv);
 			searchLabel.appendChild(div);
-			});	
-
+			});
 
 	})
 
@@ -283,6 +282,12 @@ cachedrandomDadjokesMix = []
 cachedrandomDadjokesPos = []
 function searchRandomFilter(){
 
+	//function enable star radio buttons after click
+	document.getElementById('rating1').disabled = false;
+	document.getElementById('rating2').disabled = false;
+	document.getElementById('rating3').disabled = false;
+	document.getElementById('rating4').disabled = false;
+	document.getElementById('rating5').disabled = false;
 
   let filterSelection = document.querySelector('input[name=state-d]:checked');
   if (filterSelection!= null ){
@@ -323,14 +328,49 @@ function searchRandomFilter(){
 					}
 				).then(data =>{ 
 					let jokeLabel = document.getElementById('jokeLabel');
-						jokeLabel.innerHTML = data.joke+ '</br>'+sentimentEmoji(data.sentiment);
-					}
-				)
- 	}
+						jokeLabel.innerHTML = data.joke + '</br>'+sentimentEmoji(data.sentiment);
+				// Get Rating
+				jokeID = data.id;
+				getCurrentRating(jokeID);
+			})
 
-
-
+			searchByTermPage
+	}
 }
+//onClick functions for rating radio buttons
+function clickRating1(){
+	UpdateRating(jokeID, 1)
+	disableRating();
+}
+
+function clickRating2(){
+	UpdateRating(jokeID, 2)
+	disableRating();
+}
+
+function clickRating3(){
+	UpdateRating(jokeID, 3)
+	disableRating();
+}
+
+function clickRating4(){
+	UpdateRating(jokeID, 4)
+	disableRating();
+}
+function clickRating5(){
+	UpdateRating(jokeID, 5)
+	disableRating();
+}
+
+//function diables star radio buttons after click
+function disableRating(){
+	document.getElementById('rating1').disabled = true;
+	document.getElementById('rating2').disabled = true;
+	document.getElementById('rating3').disabled = true;
+	document.getElementById('rating4').disabled = true;
+	document.getElementById('rating5').disabled = true;
+}
+
 
 let popTheJoke = ( jokeArray )=>
 {

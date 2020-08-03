@@ -108,7 +108,7 @@
   width: 66%;
   padding: 10px 20px 20px 20px;
   overflow: hidden;
-  background-color: lightgrey;
+  background-color: #DCDCDC;
 }
 
 #jokeLabel {
@@ -143,6 +143,7 @@
   padding: 10px 10px 0px 10px;
   display: none;
 }
+
 /*
 .right {
     float: left;
@@ -151,6 +152,7 @@
     margin-top: 7px;
 }
 */
+
 @media only screen and (max-width:800px) {
   /* tablets: */
 .left, .main, .right {
