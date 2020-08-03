@@ -389,7 +389,7 @@ let positiveJoke = ()=>{
 			}
 		).then(data =>{
 			let sentiment =data.sentiment;
-			if (data.sentiment=='POSITIVE' || data.sentiment=='NEUTRAL'  ){
+			if (entiment=='POSITIVE' || sentiment=='NEUTRAL'  ){
 				let jokeLabel = document.getElementById('jokeLabel');
 				jokeLabel.innerHTML = data.joke + '</br>'+sentimentEmoji(data.sentiment);
 			}else{
@@ -440,7 +440,7 @@ let mixedJoke = ()=>{
 			}
 		).then(data =>{
 			let sentiment =data.sentiment;
-			if (data.sentiment== 'MIXED'  ){
+			if (sentiment== 'MIXED'  || sentiment=='NEUTRAL' ){
 				let jokeLabel = document.getElementById('jokeLabel');
 				jokeLabel.innerHTML = data.joke + '</br>'+sentimentEmoji(data.sentiment);
 			}else{
