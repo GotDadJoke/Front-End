@@ -56,3 +56,9 @@ ul.social-buttons li a:hover {
     background-color: #d69b56;
     color: white;
 }
+.navbar .logoimg {
+    height: 31px;
+    position: relative;
+    /*top: 8px;*/
+    margin-bottom: 22px;
+}
