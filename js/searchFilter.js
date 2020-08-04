@@ -7,6 +7,8 @@ let jokeID = "";
 function searchByTermPage(term){
 	let limit = 5; 
 	let urlTerm =  api_url_term_page+"?term="+term+"&limit="+limit ;
+	let	searchLabel = document.getElementById('searchLabel');
+	searchLabel.innerHTML="";
 	if(term != prevTerm){
 		positiveBatch.clear();
 		negativeBatch.clear();
@@ -14,6 +16,7 @@ function searchByTermPage(term){
 		groupJokes( term , urlTerm);
 	}
 	prevTerm = term; 
+
 
 	let filterSelection = document.querySelector('input[name=state-d]:checked');
 	if (filterSelection!= null ){
@@ -42,9 +45,6 @@ function searchByTermPage(term){
 
 let positiveJokesBatch= (urlTerm)=>{
 	
-	searchLabel = document.getElementById('searchLabel');
-	searchLabel.innerHTML=""
-
 	return positiveBatch.forEach( (jokeObj)=> {
 			let emoji = document.createTextNode(sentimentEmoji(`${jokeObj.sentiment}`)),
 				br = document.createElement("br"),
@@ -62,9 +62,6 @@ let positiveJokesBatch= (urlTerm)=>{
 } 
 
 let negativeJokesBatch= (urlTerm)=>{
-	
-	searchLabel = document.getElementById('searchLabel');
-	searchLabel.innerHTML=""
 
 	return negativeBatch.forEach( (jokeObj)=> {
 			let emoji = document.createTextNode(sentimentEmoji(`${jokeObj.sentiment}`)),
@@ -85,8 +82,6 @@ let negativeJokesBatch= (urlTerm)=>{
 
 let mixedJokesBatch= (urlTerm)=>{
 	
-	searchLabel = document.getElementById('searchLabel');
-	searchLabel.innerHTML=""
 	
 	return mixedBatch.forEach( (jokeObj)=> {
 			let emoji = document.createTextNode(sentimentEmoji(`${jokeObj.sentiment}`)),
@@ -111,7 +106,7 @@ let keepSearchingJokes=( data, urlTerm, sentiment, page, arr)=>{
 	let totalPages = data.total_pages;
 	let totalJokes = data.total_jokes;
 	 let limit = 5;
-	 console.log("we are here  keep searchinh")
+	
 	if (page <= totalPages && arr.size < limit){
 	
 	  let url= urlTerm+"&page="+page;
@@ -141,8 +136,7 @@ let getThoseJokes = (urlTerm)=>{
 	fetch(urlTerm)
 	.then( (resp) => resp.json()) 
 	.then(data =>{ 
-			searchLabel = document.getElementById('searchLabel');
-			searchLabel.innerHTML=""
+
 			let jokesArray = data.results;
 
 			return jokesArray.forEach( (jokeObj)=> {
@@ -175,12 +169,9 @@ let groupJokes = ( term , urlTerm)=>{
 
 let optimizedJokes = ( term , total_jokes )=>{
 	let urlTerm =api_url_term_page+"?term="+term+"&limit="+ total_jokes
-
 	fetch(urlTerm)
 	.then( (resp) => resp.json()) 
 	.then(data =>{ 
-			searchLabel = document.getElementById('searchLabel');
-			searchLabel.innerHTML=""
 			let jokesArray = data.results;
 			return jokesArray.forEach( (jokeObj)=> {
 
