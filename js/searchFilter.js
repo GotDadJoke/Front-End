@@ -27,12 +27,21 @@ function searchByTermPage(term){
 
 	switch(filterSelection){
  		case 'positive':
+ 			if (positiveBatch.size == 0){
+ 				searchLabel.innerHTML = "0 jokes found for '"+term+"' with positive sentiment";
+			}	
  			positiveJokesBatch(urlTerm)
  			break;
  		case 'mixed':
+ 			if (mixedBatch.size == 0){
+ 				searchLabel.innerHTML = "0 jokes found for '"+term+"' with mixed sentiment";
+			}
  			mixedJokesBatch(urlTerm)
  			break;
  		case 'negative':
+ 			if (negativeBatch.size == 0){
+ 				searchLabel.innerHTML = "0 jokes found for '"+term+"' with negative sentiment";
+			}
  			negativeJokesBatch(urlTerm)
  			break;
  		default:
@@ -44,7 +53,7 @@ function searchByTermPage(term){
 
 
 let positiveJokesBatch= (urlTerm)=>{
-	
+
 	return positiveBatch.forEach( (jokeObj)=> {
 			let emoji = document.createTextNode(sentimentEmoji(`${jokeObj.sentiment}`)),
 				br = document.createElement("br"),
@@ -138,6 +147,9 @@ let getThoseJokes = (urlTerm)=>{
 	.then(data =>{ 
 
 			let jokesArray = data.results;
+			if( jokesArray.length == 0){
+				searchLabel.innerHTML = "0 jokes found for '"+term+"'";
+			}
 
 			return jokesArray.forEach( (jokeObj)=> {
 
