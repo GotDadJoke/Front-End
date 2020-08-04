@@ -39,10 +39,12 @@ body {
     margin-left: 0;
     /*max-width: 1200px;*/
 }
+
 header{
   background-color: var(--nav);
   width: 100%;
 }
+
 .navbar{
   width: auto;
   height: 48px;
