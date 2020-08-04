@@ -5,10 +5,13 @@ mixedBatch= new Set()
 prevTerm = ''
 let jokeID = "";
 function searchByTermPage(term){
+	let limit = 5; 
+	let urlTerm =  api_url_term_page+"?term="+term+"&limit="+limit ;
 	if(term != prevTerm){
 		positiveBatch.clear();
 		negativeBatch.clear();
 		mixedBatch.clear();
+		groupJokes( term , urlTerm);
 	}
 	prevTerm = term; 
 
@@ -18,10 +21,6 @@ function searchByTermPage(term){
   		}else{
   			filterSelection= 'off';
   		}
-	let limit = 5; 
-	let urlTerm =  api_url_term_page+"?term="+term+"&limit="+limit ;
-	
-
 
 	switch(filterSelection){
  		case 'positive':
@@ -51,7 +50,7 @@ let positiveJokesBatch= (urlTerm)=>{
 	.then( (resp) => resp.json()) 
 	.then(data =>{
 		
-		if (data.total_jokes <= 5){
+		/*if (data.total_jokes <= 5){
 
 			let jokes = data.results;
 		    jokes.forEach(obj =>{
@@ -74,7 +73,7 @@ let positiveJokesBatch= (urlTerm)=>{
 		   	keepSearchingJokes(data, urlTerm,'NEUTRAL', 1, positiveBatch)
 		   }
 
-		}	
+		}*/	
 	
 
 	return positiveBatch.forEach( (jokeObj)=> {
@@ -105,7 +104,7 @@ let negativeJokesBatch= (urlTerm)=>{
 	.then(data =>{
 		
 		
-		if (data.total_jokes <= 5){
+		/*if (data.total_jokes <= 5){
 
 			let jokes = data.results;
 		    jokes.forEach(obj =>{
@@ -123,7 +122,7 @@ let negativeJokesBatch= (urlTerm)=>{
 		    if (negativeBatch. size<5){
 		   		keepSearchingJokes(data, urlTerm,'NEGATIVE', 1,  negativeBatch)
 		   	}
-		}	
+		}*/	
 	
 
 	return negativeBatch.forEach( (jokeObj)=> {
@@ -155,7 +154,7 @@ let mixedJokesBatch= (urlTerm)=>{
 	.then(data =>{
 		
 		
-		if (data.total_jokes <= 5){
+		/*if (data.total_jokes <= 5){
 
 			let jokes = data.results;
 		    jokes.forEach(obj =>{
@@ -173,7 +172,7 @@ let mixedJokesBatch= (urlTerm)=>{
 		    if (mixedBatch. size<5){
 		   keepSearchingJokes(data, urlTerm,'MIXED', 1, mixedBatch)
 			}		
-		}	
+		}	*/
 	
 
 	return mixedBatch.forEach( (jokeObj)=> {
@@ -234,23 +233,10 @@ let getThoseJokes = (urlTerm)=>{
 			searchLabel = document.getElementById('searchLabel');
 			searchLabel.innerHTML=""
 			let jokesArray = data.results;
+
 			return jokesArray.forEach( (jokeObj)=> {
 
-			let sentiment= 	`${jokeObj.sentiment}`;
-			if (sentiment=='POSITIVE' || sentiment=='NEUTRAL'){
-			
-					positiveBatch.add(jokeObj);
-				
-			}else if (sentiment=="NEGATIVE"){
-				
-					negativeBatch.add(jokeObj);
-				
-			}else{
-				
-					mixedBatch.add(jokeObj);
-			}
-
-			let emoji = document.createTextNode(sentimentEmoji(sentiment)),
+			let emoji = document.createTextNode(sentimentEmoji(`${jokeObj.sentiment}`)),
 				br = document.createElement("br"),
 				starDiv=document.createElement('div'),
 				div= document.createElement('div');
@@ -261,6 +247,47 @@ let getThoseJokes = (urlTerm)=>{
 			div.appendChild(emoji);
 			div.appendChild(starDiv);
 			searchLabel.appendChild(div);
+			});						
+			}
+		)
+
+}
+let groupJokes = ( term , urlTerm)=>{
+	fetch(urlTerm)
+	.then( (resp) => resp.json()) 
+	.then(data =>{ 
+			let jokesArray = data.results;
+			let total_jokes = data.total_jokes;
+			optimizedJokes(term, total_jokes);
+		});
+}
+
+let optimizedJokes = ( term , total_jokes )=>{
+	let urlTerm =api_url_term_page+"?term="+term+"&limit="+ total_jokes
+
+	fetch(urlTerm)
+	.then( (resp) => resp.json()) 
+	.then(data =>{ 
+			searchLabel = document.getElementById('searchLabel');
+			searchLabel.innerHTML=""
+			let jokesArray = data.results;
+			return jokesArray.forEach( (jokeObj)=> {
+
+			let sentiment= 	`${jokeObj.sentiment}`;
+			if ((sentiment=='POSITIVE' || sentiment=='NEUTRAL') && positiveBatch.size<5){
+			
+					positiveBatch.add(jokeObj);
+				
+			}else if (sentiment=="NEGATIVE" && negativeBatch.size< 5 ){
+				
+					negativeBatch.add(jokeObj);
+				
+			}else{
+				if( mixedBatch.size < 5 )
+				{
+					mixedBatch.add(jokeObj);
+				}
+			}
 			});						
 			}
 		)
