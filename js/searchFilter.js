@@ -45,37 +45,6 @@ let positiveJokesBatch= (urlTerm)=>{
 	searchLabel = document.getElementById('searchLabel');
 	searchLabel.innerHTML=""
 
-	
-	fetch(urlTerm)
-	.then( (resp) => resp.json()) 
-	.then(data =>{
-		
-		/*if (data.total_jokes <= 5){
-
-			let jokes = data.results;
-		    jokes.forEach(obj =>{
-		     if (obj.sentiment=='NEUTRAL' || obj.sentiment=='POSITIVE'){
-		     	
-		     		positiveBatch.add(obj)
-
-		     }
-
-		 	});
-		    }
-
-
-		else{
-		   console.log("More than 5 jokes")
-		   if (positiveBatch. size<5){
-		   keepSearchingJokes(data, urlTerm,'POSITIVE', 1, positiveBatch)
-			}		
-		   if (positiveBatch. size<5){
-		   	keepSearchingJokes(data, urlTerm,'NEUTRAL', 1, positiveBatch)
-		   }
-
-		}*/	
-	
-
 	return positiveBatch.forEach( (jokeObj)=> {
 			let emoji = document.createTextNode(sentimentEmoji(`${jokeObj.sentiment}`)),
 				br = document.createElement("br"),
@@ -90,40 +59,12 @@ let positiveJokesBatch= (urlTerm)=>{
 			searchLabel.appendChild(div);
 			});
 
-	})
-
 } 
 
 let negativeJokesBatch= (urlTerm)=>{
 	
 	searchLabel = document.getElementById('searchLabel');
 	searchLabel.innerHTML=""
-	
-	fetch(urlTerm)
-	.then( (resp) => resp.json()) 
-	.then(data =>{
-		
-		
-		/*if (data.total_jokes <= 5){
-
-			let jokes = data.results;
-		    jokes.forEach(obj =>{
-		     if (obj.sentiment=='NEGATIVE'){
-		 
-		     		negativeBatch.add(obj)  
-		     }
-
-		 	});
-		    }
-
-
-		else{
-		   console.log("More than 5 jokes")
-		    if (negativeBatch. size<5){
-		   		keepSearchingJokes(data, urlTerm,'NEGATIVE', 1,  negativeBatch)
-		   	}
-		}*/	
-	
 
 	return negativeBatch.forEach( (jokeObj)=> {
 			let emoji = document.createTextNode(sentimentEmoji(`${jokeObj.sentiment}`)),
@@ -138,8 +79,6 @@ let negativeJokesBatch= (urlTerm)=>{
 			div.appendChild(starDiv);
 			searchLabel.appendChild(div);
 			});	
-	})
-
 } 
 
 
@@ -149,32 +88,6 @@ let mixedJokesBatch= (urlTerm)=>{
 	searchLabel = document.getElementById('searchLabel');
 	searchLabel.innerHTML=""
 	
-	fetch(urlTerm)
-	.then( (resp) => resp.json()) 
-	.then(data =>{
-		
-		
-		/*if (data.total_jokes <= 5){
-
-			let jokes = data.results;
-		    jokes.forEach(obj =>{
-		     if (obj.sentiment=='MIXED'){
-		     	
-		     		mixedBatch.add(obj)
-		     }
-
-		 	});
-		    }
-
-
-		else{
-		   console.log("More than 5 jokes")
-		    if (mixedBatch. size<5){
-		   keepSearchingJokes(data, urlTerm,'MIXED', 1, mixedBatch)
-			}		
-		}	*/
-	
-
 	return mixedBatch.forEach( (jokeObj)=> {
 			let emoji = document.createTextNode(sentimentEmoji(`${jokeObj.sentiment}`)),
 				br = document.createElement("br"),
@@ -189,8 +102,6 @@ let mixedJokesBatch= (urlTerm)=>{
 			searchLabel.appendChild(div);
 			});	
 
-
-	})
 
 } 
 
