@@ -27,22 +27,23 @@ function searchByTermPage(term){
 
 	switch(filterSelection){
  		case 'positive':
+ 			
+ 			positiveJokesBatch(urlTerm)
  			if (positiveBatch.size == 0){
  				searchLabel.innerHTML = "0 jokes found for '"+term+"' with positive sentiment";
 			}	
- 			positiveJokesBatch(urlTerm)
  			break;
  		case 'mixed':
+ 			mixedJokesBatch(urlTerm)
  			if (mixedBatch.size == 0){
  				searchLabel.innerHTML = "0 jokes found for '"+term+"' with mixed sentiment";
 			}
- 			mixedJokesBatch(urlTerm)
  			break;
  		case 'negative':
+ 			negativeJokesBatch(urlTerm)
  			if (negativeBatch.size == 0){
  				searchLabel.innerHTML = "0 jokes found for '"+term+"' with negative sentiment";
 			}
- 			negativeJokesBatch(urlTerm)
  			break;
  		default:
  			getThoseJokes(urlTerm);
@@ -169,7 +170,7 @@ let getThoseJokes = (urlTerm)=>{
 		)
 
 }
-let groupJokes = ( term , urlTerm)=>{
+let groupJokes = async ( term , urlTerm)=>{
 	fetch(urlTerm)
 	.then( (resp) => resp.json()) 
 	.then(data =>{ 

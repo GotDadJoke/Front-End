@@ -109,14 +109,6 @@ h1, h2 {
 }
 
 @media only screen and (min-width:801px){
-.footer{
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  padding: 5px 20px;
-  box-sizing: border-box;
-
-}
 .mainbody, .navbar, .footer{
   padding-left: 3rem !important; 
   padding-right: 3rem !important;
